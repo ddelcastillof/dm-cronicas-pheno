@@ -96,10 +96,13 @@
         {\usebeamercolor[fg]{institute}\insertinstitute}\\
         {\usebeamercolor[fg]{mentor}\insertmentor}\\
         {\usebeamercolor[fg]{date}\insertdate}};
-    % Programme logo, bottom centre
-    \node[anchor=south, inner sep=0pt] at ([yshift=0.02\paperheight]current page.south)
-      {\includegraphics[height=0.1\paperheight]{npgh-logo}};
   \end{tikzpicture}}
+
+% ---- Programme logo on every frame ----
+% In the footline, so its height is reserved and frame content stops above it
+\setbeamertemplate{footline}{%
+  \hbox to \paperwidth{\hfil\includegraphics[height=0.1\paperheight]{npgh-logo}\hfil}%
+  \vspace{0.02\paperheight}}
 
 % ---- Reference list ----
 \setbeamertemplate{bibliography item}{\textcolor{SpiritPurple}{\insertbiblabel}}
