@@ -76,22 +76,22 @@
 \setbeamercolor{mentor}{parent=author}
 
 % Sizes scaled from the 7.5in-tall template to the 90mm-tall 16:9 page (40pt, 24pt)
-\setbeamerfont{title}{size={\fontsize{18}{22}\selectfont}}
-\setbeamerfont{subtitle}{size={\fontsize{14}{18}\selectfont}}
-\setbeamerfont{author}{size={\fontsize{11}{13}\selectfont}}
+\setbeamerfont{title}{size={\fontsize{18}{24}\selectfont}}
+\setbeamerfont{subtitle}{size={\fontsize{14}{20}\selectfont}}
+\setbeamerfont{author}{size={\fontsize{12}{16}\selectfont}}
 
 \setbeamertemplate{title page}{%
   \begin{tikzpicture}[remember picture, overlay]
     % Title (+ subtitle)
     \node[anchor=south, text width=0.85\paperwidth, align=center]
-      at ([yshift=-0.55\paperheight]current page.north) {%
+      at ([yshift=-0.50\paperheight]current page.north) {%
         {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
         \ifx\insertsubtitle\empty\else
           \vspace{4pt}{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
         \fi};
     % Name / Fellowship site / Mentor(s) / Date
     \node[anchor=north, text width=0.85\paperwidth, align=center, font=\usebeamerfont{author}]
-      at ([yshift=-0.61\paperheight]current page.north) {%
+      at ([yshift=-0.55\paperheight]current page.north) {%
         {\usebeamercolor[fg]{author}\insertauthor}\\
         {\usebeamercolor[fg]{institute}\insertinstitute}\\
         {\usebeamercolor[fg]{mentor}\insertmentor}\\
