@@ -12,3 +12,7 @@ dev/
 
 # Slides
 slides/
+
+# Claudette
+.claude/
+CLAUDE.md
