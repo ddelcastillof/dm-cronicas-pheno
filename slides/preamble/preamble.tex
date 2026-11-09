@@ -1,0 +1,105 @@
+% ---- Packages -----
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+
+% ---- Math ----
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% ---- Figures ----
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\graphicspath{{assets/}}
+
+% ---- Listings ----
+\usepackage{enumerate}
+\usepackage{multicol}
+
+% ---- Frame numbering ----
+\setbeamertemplate{navigation symbols}{}
+% Footline is the bottom band
+\setbeamertemplate{page number in head/foot}[framenumber]
+% Continuation counter for slide titles
+\setbeamertemplate{frametitle continuation}{(\MakeLowercase{\insertcontinuationcountroman})}
+
+% ---- Bibliography ----
+\usepackage[style=vancouver, backend=biber, natbib=true, sorting=none]{biblatex}
+\addbibresource{bib/references.bib}
+
+% ---- Defining Colours ----
+% UW brand
+% Primary
+\definecolor{HuskyPurple}{HTML}{32006E}
+\definecolor{SpiritPurple}{HTML}{4B2E83}
+\definecolor{HuskyGold}{HTML}{B7A57A}
+\definecolor{HuskyGoldWeb}{HTML}{E8E3D3}
+\definecolor{HeritageGold}{HTML}{85754D}
+\definecolor{SpiritGold}{HTML}{FFC700}
+
+% Accent
+\definecolor{AccentGreen}{HTML}{AADB1E}
+\definecolor{AccentTeal}{HTML}{2AD2C9}
+\definecolor{AccentPink}{HTML}{E93CAC}
+\definecolor{AccentLavender}{HTML}{C5B4E3}
+
+% ---- Hyperlinks ----
+\hypersetup{colorlinks=true, allcolors=SpiritPurple}
+
+% ---- Title colours ----
+\setbeamercolor{title}{fg=HuskyPurple}
+\setbeamercolor{frametitle}{fg=SpiritPurple}
+
+% ---- Title font size ----
+\setbeamerfont{frametitle}{size={\fontsize{12}{14}\selectfont}}
+\setbeamerfont{framesubtitle}{size={\fontsize{10}{12}\selectfont}}
+
+% ---- Bullets ----
+\setbeamercolor{itemize item}{fg=SpiritPurple}
+\setbeamercolor{itemize subitem}{fg=HeritageGold}
+\setbeamercolor{itemize subsubitem}{fg=HuskyPurple}
+\setbeamercolor{enumerate item}{fg=SpiritPurple}
+\setbeamercolor{enumerate subitem}{fg=HeritageGold}
+\setbeamercolor{description item}{fg=SpiritPurple}
+
+% ---- Other particular colours ----
+\newcommand{\pkg}[1]{\textcolor{AccentGreen}{\texttt{#1}}}
+\newcommand{\boldtxt}[1]{\textcolor{SpiritPurple}{\textbf{#1}}}
+
+% ---- Title page ----
+%% Mentor is metadata like author
+\newcommand{\insertmentor}{}
+\newcommand{\mentor}[1]{\renewcommand{\insertmentor}{#1}}
+\setbeamercolor{mentor}{parent=author}
+
+% Sizes scaled from the 7.5in-tall template to the 90mm-tall 16:9 page (40pt, 24pt)
+\setbeamerfont{title}{size={\fontsize{18}{22}\selectfont}}
+\setbeamerfont{subtitle}{size={\fontsize{14}{18}\selectfont}}
+\setbeamerfont{author}{size={\fontsize{11}{13}\selectfont}}
+
+\setbeamertemplate{title page}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % Title (+ subtitle)
+    \node[anchor=south, text width=0.85\paperwidth, align=center]
+      at ([yshift=-0.55\paperheight]current page.north) {%
+        {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
+        \ifx\insertsubtitle\empty\else
+          \vspace{4pt}{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+        \fi};
+    % Name / Fellowship site / Mentor(s) / Date
+    \node[anchor=north, text width=0.85\paperwidth, align=center, font=\usebeamerfont{author}]
+      at ([yshift=-0.61\paperheight]current page.north) {%
+        {\usebeamercolor[fg]{author}\insertauthor}\\
+        {\usebeamercolor[fg]{institute}\insertinstitute}\\
+        {\usebeamercolor[fg]{mentor}\insertmentor}\\
+        {\usebeamercolor[fg]{date}\insertdate}};
+    % Programme logo, bottom centre
+    \node[anchor=south, inner sep=0pt] at ([yshift=0.02\paperheight]current page.south)
+      {\includegraphics[height=0.1\paperheight]{npgh-logo}};
+  \end{tikzpicture}}
+
+% ---- Reference list ----
+\setbeamertemplate{bibliography item}{\textcolor{SpiritPurple}{\insertbiblabel}}
