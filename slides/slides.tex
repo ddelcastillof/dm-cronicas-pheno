@@ -24,16 +24,17 @@
 \begin{frame}
   \frametitle{Introduction (i)}
   \begin{itemize}
-    \item Cardiovascular disease is a global health threat, projected to become one of the largest contributors to disease burden by 2100, particularly in LMICs.
-    \item Type 2 diabetes (T2D) is one of its major contributors, while type 1 diabetes (T1D) classically was not. 
-    \item However, diabetes is heterogeneous. Insulin resistance and autoimmunity overlap on a spectrum, and many individuals show features of both.
+    \item Cardiovascular disease is a global health threat \cite{Global-Burden-of-Cardiovascular-Diseases-and-Risks-2023-Collaborators2025-pr}, 
+    projected to become one of the largest contributors to disease burden by 2100, particularly in LMICs \cite{Murray2026-np}.
+    \item Type 2 diabetes (T2D) is one of its major contributors, while type 1 diabetes (T1D) classically was not \cite{Pinzon-Cortes2026-mv}. 
+    \item However, diabetes is heterogeneous. Insulin resistance and autoimmunity overlap on a spectrum, and many individuals show features of both \cite{Redondo2020-fn, Franks2025-om}.
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Introduction (ii)}
   \begin{itemize}
-    \item A data-driven framework from clinical parameters has been previously proposed in individuals from European ancestry, with different risk of micro and macrovascular complications.
+    \item A data-driven framework from clinical parameters has been previously proposed in individuals from European ancestry, with different risk of micro and macrovascular complications \cite{Ahlqvist2018-su, Bennet2021-en}.
     \item A more informative categorization of diabetic patients will provide insigths on patient CVD stratification in resource-constrained settings.
   \end{itemize}
 \end{frame}
@@ -44,7 +45,7 @@
   \frametitle{Specific Aims}
   \begin{itemize}
     \item To classify individuals with type 2 diabetes in the CRONICAS cohort into Ahlqvist data-driven subtypes.
-    \item To assess the transferability of a T2D polygenic risk score validated in a native mesoamerican sample to the Puno site of the CRONICAS cohort.
+    \item To assess the transferability of a T2D polygenic risk score validated in a admixed mesoamerican sample to the Puno site of the CRONICAS cohort.
     \item To examine whether polygenic liability to T2D differs across subtypes in the Puno site of the CRONICAS cohort.
   \end{itemize}
 \end{frame}
@@ -53,15 +54,145 @@
 \begin{frame}
   \frametitle{Methods (i)}
   \begin{itemize}
-    \item 
+    \item \textbf{Aim 1:} CRONICAS cohort
+      \begin{itemize}
+        \item Prospective cohort study with 3135 participants at baseline \cite{Miranda2012-cg}.
+        \item T2D prevalence of 7.1\% at baseline (223/3135) \cite{Bernabe-Ortiz2016-an, Carrillo-Larco2018-js}.
+        \item Puno with the highest prevalence at follow-up \cite{Bernabe-Ortiz2016-an}.
+      \end{itemize}
+    \item Supervised machine learning classification using coordinates published by Ahlquvist et al \cite{Ahlqvist2018-su}.
+    \item Stability will be assessed computing Jaccard similarity indexes with boostrap resampling (1000 reps).
+    \item As a sensitivity analysis, an unconstrained Gaussian mixture model will be fitted to the same variables.
   \end{itemize}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Methods (ii)}
+  \begin{itemize}
+    \item \textbf{Aim 2:} Polygenic risk score transferability
+      \begin{itemize}
+        \item Torres et al.\cite{Torres2026-qs} conducted genomic analyses in 19,431 T2D cases from the Mexico City Prospective Study
+        \item 86 GWAS associations were identified in this admixed mesoamerican population.
+      \end{itemize}
+    \item T2D polygenic scores will be computed in genotyped participants of the Puno site (n = 669) \cite{Castaneda2026-qq}.
+    \item Transferability will be assessed by estimating the association of each score, with prevalent and incident diabetes and with continuous glycaemic traits.
+    \item Performance will be reported as the score's incremental contribution.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Methods (iii)}
+  \begin{itemize}
+    \item \textbf{Aim 3:} Compare polygenic liability across subtypes
+    \item Test whether overall and process-specific T2D polygenic scores differ across Aim 1 subtypes
+    \item Soft membership probabilities will be used to relate genetic signals to subtype assignment (exploratory, given sample size)
+  \end{itemize}
+\end{frame}
+
+%=====================================
+% Timeline
+%=====================================
+\begin{frame}
+  \frametitle{Timeline}
+  \centering
+  % One x-unit = one month (0 = start of Oct 2026); one y-unit = one row, counting down
+  \begin{tikzpicture}[x=7.5mm, y=-4.4mm, font=\scriptsize]
+    \def\lw{6} % activity column width, in months
+    % Zebra rows and header bands
+    \foreach \y in {3,5,...,11} \fill[HuskyGoldWeb] (-\lw,\y) rectangle (12,\y+1);
+    \fill[HuskyPurple] (-\lw,0) rectangle (12,1) (-\lw,1) rectangle (0,2);
+    \fill[SpiritPurple] (0,1) rectangle (12,2);
+    \draw[white] (0,0) -- (0,2) (3,0) -- (3,2) (0,1) -- (12,1);
+    \foreach \x in {1,2,4,5,...,11} \draw[white] (\x,1) -- (\x,2);
+    % Body grid: light month lines, stronger year boundary
+    \foreach \x in {1,...,11} \draw[HuskyGold!50, line width=0.3pt] (\x,2) -- (\x,12);
+    \draw[HeritageGold, line width=0.6pt] (0,2) -- (0,12) (3,2) -- (3,12);
+    \draw[HuskyPurple, line width=0.8pt] (-\lw,12) -- (12,12);
+    % Header text
+    \node[white, font=\scriptsize\bfseries] at (-\lw/2,1) {Activity};
+    \node[white, font=\scriptsize\bfseries] at (1.5,0.5) {2026};
+    \node[white, font=\scriptsize\bfseries] at (7.5,0.5) {2027};
+    \foreach \m [count=\i] in {Oct,Nov,Dec,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep}
+      \node[white] at (\i-0.5,1.5) {\m};
+    % Activities: label / first month / last month (1 = Oct 2026, 12 = Sep 2027)
+    \foreach \lbl/\s/\e [count=\r from 2] in {
+        Ethics approval/1/1,
+        Mentoring/1/12,
+        Refine analysis plan/1/3,
+        Request data access/4/4,
+        Data wrangling and modelling/5/9,
+        Assess model performance/7/8,
+        Performing subanalyses/8/11,
+        U.S.\ training period/9/11,
+        Scientific manuscript writing/10/11,
+        Results dissemination/11/12} {
+      \fill[SpiritPurple!60, rounded corners=1.5pt] (\s-0.92,\r+0.2) rectangle (\e-0.08,\r+0.8);
+      \node[anchor=west, text=HuskyPurple] at (-\lw+0.15,\r+0.5) {\lbl};
+    }
+    % Today marker, from the compile date; clipped away outside the fellowship window
+    \pgfmathsetmacro\now{12*(\the\year-2026) + \the\month - 10 + (\the\day-1)/30}
+    \begin{scope}
+      \clip (0,2) rectangle (12,13.5);
+      \draw[AccentPink, line width=0.8pt, dashed] (\now,2) -- (\now,12);
+      \node[below, text=AccentPink, font=\tiny\bfseries] at (\now,12) {Today};
+    \end{scope}
+  \end{tikzpicture}
+\end{frame}
+
+
+%=====================================
+% Anticipated Challenges
+%=====================================
+
+\begin{frame}
+\frametitle{Anticipated Challenges}
+\begin{itemize}
+  \item Small genetic sample (n = 669) $\rightarrow$ Limiting Aim 2 as confirmatory and Aim 3 as exploratory
+  \item Possibility to increase genetic sample by analyzing Lima and Tumbes samples $\rightarrow$ Costs exceed \$10K
+\end{itemize}
+\end{frame}
+
+%=====================================
+% Questions for my peers
+%=====================================
+\begin{frame}
+\frametitle{Questions for my peers}
+% Anchored to the page centre
+\begin{tikzpicture}[remember picture, overlay]
+  \node[text width=0.85\paperwidth, align=flush center] at (current page.center) {%
+    I have experience as a programmer (\LaTeX) and as a health data scientist, but my background in genomics is limited. \\
+    Could you recommend any good resources for transferring my epidemiology/data science skills to this realm?};
+\end{tikzpicture}
+\end{frame}
+
+%=====================================
+% Sources of Joy
+%=====================================
+\begin{frame}
+  \frametitle{Sources of Joy}
+  \centering
+  % Polaroid collage: same height, uncropped, white border, soft shadow, slight tilt
+  \begin{tikzpicture}[photo/.style={fill=white, inner sep=1.2mm, drop shadow={opacity=0.3}}]
+    \node[photo, rotate=-5] at (-52mm, 2mm) {\includegraphics[height=38mm]{photo-1}};
+    \node[photo, rotate=-3] at ( 28mm, 3mm) {\includegraphics[height=38mm]{photo-3}};
+    \node[photo, rotate=6]  at ( 54mm,-1mm) {\includegraphics[height=38mm]{photo-4}};
+    \node[photo, rotate=3]  at (-12mm,-2mm) {\includegraphics[height=38mm]{photo-2}};
+  \end{tikzpicture}
+\end{frame}
+
 %=====================================
 % References
 %=====================================
-\begin{frame}{References}
+% Split point set by \refsplit in preamble.tex
+\begin{frame}{References (i)}
   \begin{multicols}{2}
-    \printbibliography[heading=none]
+    \printbibliography[heading=none, check=refsfirst]
+  \end{multicols}
+\end{frame}
+
+\begin{frame}{References (ii)}
+  \begin{multicols}{2}
+    \printbibliography[heading=none, check=refsrest]
   \end{multicols}
 \end{frame}
 

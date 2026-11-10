@@ -12,6 +12,7 @@
 % ---- Figures ----
 \usepackage{xcolor}
 \usepackage{tikz}
+\usetikzlibrary{shadows}
 \usepackage{graphicx}
 \graphicspath{{assets/}}
 
@@ -27,8 +28,21 @@
 \setbeamertemplate{frametitle continuation}{(\MakeLowercase{\insertcontinuationcountroman})}
 
 % ---- Bibliography ----
-\usepackage[style=vancouver, backend=biber, natbib=true, sorting=none]{biblatex}
+% Slide-friendly: first 6 authors + et al. (Vancouver rule), no DOI/URL/access date
+\usepackage[style=vancouver, backend=biber, natbib=true, sorting=none,
+            maxbibnames=6, minbibnames=6, doi=false, url=false, eprint=false]{biblatex}
 \addbibresource{bib/references.bib}
+\AtEveryBibitem{\clearlist{language}}
+\renewcommand*{\bibfont}{\scriptsize} % biblatex resets size here, not from the frame
+\setlength{\bibitemsep}{0.3\baselineskip}
+\setlength{\biblabelsep}{0.6em} % narrower gap after "1." so fewer lines wrap
+% multicols cannot split across frames, so the list is split by number
+% shortcut: fixed split at ref 6, raise \refsplit if slide (i) has room after adding refs
+\newcommand{\refsplit}{6}
+\defbibcheck{refsfirst}{\ifnumgreater{\thefield{labelnumber}}{\refsplit}{\skipentry}{}}
+\defbibcheck{refsrest}{\ifnumgreater{\thefield{labelnumber}}{\refsplit}{}{\skipentry}}
+% Vancouver superscript citations; \supercite also removes the space before it
+\renewcommand*{\cite}{\supercite}
 
 % ---- Defining Colours ----
 % UW brand
@@ -83,7 +97,7 @@
 \setbeamertemplate{title page}{%
   \begin{tikzpicture}[remember picture, overlay]
     % Title (+ subtitle)
-    \node[anchor=south, text width=0.85\paperwidth, align=center]
+    \node[anchor=south, text width=0.92\paperwidth, align=flush center]
       at ([yshift=-0.50\paperheight]current page.north) {%
         {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}%
         \ifx\insertsubtitle\empty\else
@@ -99,7 +113,7 @@
   \end{tikzpicture}}
 
 % ---- Programme logo on every frame ----
-% In the footline, so its height is reserved and frame content stops above it
+% Goes in the footline
 \setbeamertemplate{footline}{%
   \hbox to \paperwidth{\hfil\includegraphics[height=0.1\paperheight]{npgh-logo}\hfil}%
   \vspace{0.02\paperheight}}
