@@ -37,10 +37,12 @@
 \setlength{\bibitemsep}{0.3\baselineskip}
 \setlength{\biblabelsep}{0.6em} % narrower gap after "1." so fewer lines wrap
 % multicols cannot split across frames, so the list is split by number
-% shortcut: fixed split at ref 6, raise \refsplit if slide (i) has room after adding refs
+% shortcut: fixed splits after refs 6 and 10, move them if a references slide overflows after adding refs
 \newcommand{\refsplit}{6}
+\newcommand{\refsplitb}{10}
 \defbibcheck{refsfirst}{\ifnumgreater{\thefield{labelnumber}}{\refsplit}{\skipentry}{}}
-\defbibcheck{refsrest}{\ifnumgreater{\thefield{labelnumber}}{\refsplit}{}{\skipentry}}
+\defbibcheck{refsmid}{\ifnumgreater{\thefield{labelnumber}}{\refsplit}{\ifnumgreater{\thefield{labelnumber}}{\refsplitb}{\skipentry}{}}{\skipentry}}
+\defbibcheck{refsrest}{\ifnumgreater{\thefield{labelnumber}}{\refsplitb}{}{\skipentry}}
 % Vancouver superscript citations; \supercite also removes the space before it
 \renewcommand*{\cite}{\supercite}
 
