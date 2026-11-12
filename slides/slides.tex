@@ -23,20 +23,37 @@
 %======================================
 \begin{frame}
   \frametitle{Introduction (i)}
+  % Top row: text
+  \fontsize{9}{10}\selectfont
   \begin{itemize}
-    \item Cardiovascular disease is a global health threat \cite{Global-Burden-of-Cardiovascular-Diseases-and-Risks-2023-Collaborators2025-pr}, 
+    \item Cardiovascular disease is a global health threat \cite{Global-Burden-of-Cardiovascular-Diseases-and-Risks-2023-Collaborators2025-pr},
     projected to become one of the largest contributors to disease burden by 2100, particularly in LMICs \cite{Murray2026-np}.
-    \item Type 2 diabetes (T2D) is one of its major contributors, while type 1 diabetes (T1D) classically was not \cite{Pinzon-Cortes2026-mv}. 
+    \item Type 2 diabetes (T2D) is one of its major contributors, while type 1 diabetes (T1D) classically was not \cite{Pinzon-Cortes2026-mv}.
     \item However, diabetes is heterogeneous. Insulin resistance and autoimmunity overlap on a spectrum, and many individuals show features of both \cite{Redondo2020-fn, Franks2025-om}.
   \end{itemize}
+  \vfill
+  % Bottom row: figure
+  \centering
+  \includegraphics[height=3.8cm]{heterogeneity}\\[2pt]
+  {\tiny Figure from Redondo MJ, 2020 \cite{Redondo2020-fn}.}
 \end{frame}
 
 \begin{frame}
   \frametitle{Introduction (ii)}
-  \begin{itemize}
-    \item A data-driven framework from clinical parameters has been previously proposed in individuals from European ancestry, with different risk of micro and macrovascular complications \cite{Ahlqvist2018-su, Bennet2021-en}.
-    \item A more informative categorization of diabetic patients will provide insigths on patient CVD stratification in resource-constrained settings.
-  \end{itemize}
+  \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \fontsize{10}{12}\selectfont
+      \begin{itemize}
+        \item A data-driven framework from clinical parameters has been previously proposed in individuals from European ancestry, with different risk of micro and macrovascular complications \cite{Ahlqvist2018-su, Bennet2021-en}.
+        \item A more informative categorization of diabetic patients will provide insigths on patient CVD stratification in resource-constrained settings.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includegraphics[height=4.5cm]{ahlqvist.jpg}\\[2pt]
+      {\tiny Figure from Ahlqvist E, 2020 \cite{Ahlqvist2020-sd}.}
+    \end{column}
+  \end{columns}
 \end{frame}
 %=====================================
 % Methods
@@ -194,7 +211,7 @@
 %=====================================
 % References
 %=====================================
-% Split point set by \refsplit in preamble.tex
+% Split points set by \refsplit and \refsplitb in preamble.tex
 \begin{frame}{References (i)}
   \begin{multicols}{2}
     \printbibliography[heading=none, check=refsfirst]
@@ -202,6 +219,12 @@
 \end{frame}
 
 \begin{frame}{References (ii)}
+  \begin{multicols}{2}
+    \printbibliography[heading=none, check=refsmid]
+  \end{multicols}
+\end{frame}
+
+\begin{frame}{References (iii)}
   \begin{multicols}{2}
     \printbibliography[heading=none, check=refsrest]
   \end{multicols}
