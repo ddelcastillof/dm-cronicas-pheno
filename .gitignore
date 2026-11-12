@@ -11,7 +11,12 @@ manuscripts/
 dev/
 
 # Slides
-slides/
+slides/*
+!slides/assets/
+slides/assets/*
+!slides/assets/map/
+slides/assets/map/*
+!slides/assets/map/peru-map.py
 
 # Claudette
 .claude/
