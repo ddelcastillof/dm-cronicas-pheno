@@ -53,17 +53,33 @@
 
 \begin{frame}
   \frametitle{Methods (i)}
-  \begin{itemize}
-    \item \textbf{Aim 1:} CRONICAS cohort
+  \begin{columns}[c, onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      % half-width text overflows into the footer logo at 11pt; \small would also loosen beamer's list spacing
+      \fontsize{10}{12}\selectfont
       \begin{itemize}
-        \item Prospective cohort study with 3135 participants at baseline \cite{Miranda2012-cg}.
-        \item T2D prevalence of 7.1\% at baseline (223/3135) \cite{Bernabe-Ortiz2016-an, Carrillo-Larco2018-js}.
-        \item Puno with the highest incidence at follow-up \cite{Bernabe-Ortiz2016-an}.
+        \item \textbf{Aim 1:} CRONICAS cohort
+          \begin{itemize}
+            \item Prospective cohort study with 3135 participants at baseline \cite{Miranda2012-cg}.
+            \item T2D prevalence of 7.1\% at baseline (223/3135) \cite{Bernabe-Ortiz2016-an, Carrillo-Larco2018-js}.
+            \item Puno with the highest incidence at follow-up \cite{Bernabe-Ortiz2016-an}.
+          \end{itemize}
+        \item Supervised machine learning classification using coordinates from Ahlqvist et al \cite{Ahlqvist2018-su}.
+        \item Stability will be assessed computing Jaccard similarity indexes with boostrap resampling (1000 reps).
+        \item Sensitivity analysis: Gaussian mixture model.
       \end{itemize}
-    \item Supervised machine learning classification using coordinates published by Ahlqvist et al \cite{Ahlqvist2018-su}.
-    \item Stability will be assessed computing Jaccard similarity indexes with boostrap resampling (1000 reps).
-    \item As a sensitivity analysis, an unconstrained Gaussian mixture model will be fitted to the same variables.
-  \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \centering
+      % Peru map, 1 degree = 0.3cm; CRONICAS sites (Tumbes, Lima, Puno) shaded
+      \begin{tikzpicture}[x=0.3cm, y=0.3cm,
+          site/.style={fill=SpiritPurple},
+          border/.style={black},
+          outline/.style={black}]
+        \input{assets/peru-map.tex}
+      \end{tikzpicture}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -119,10 +135,10 @@
         Ethics approval/1/1,
         Mentoring/1/12,
         Refine analysis plan/1/3,
-        Request data access/4/4,
-        Data wrangling and modelling/5/9,
-        Assess model performance/7/8,
-        Performing subanalyses/8/11,
+        Request data access/4/6,
+        Aim 1 analysis /5/8,
+        Aim 2 analysis /7/10,
+        Aim 3 analysis /9/11,
         U.S.\ training period/9/11,
         Scientific manuscript writing/10/11,
         Results dissemination/11/12} {
